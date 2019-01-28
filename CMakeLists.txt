@@ -16,7 +16,7 @@ execute_process (COMMAND git  show -s --format=%ci HEAD
 )
 
 #Required libraries
-find_package (OpenCV 2.4 REQUIRED)
+find_package (OpenCV 3.4.3 REQUIRED)
 include_directories (${OpenCV_INCLUDE_DIR})
 find_package (Threads REQUIRED) # For pthreads
 
@@ -37,10 +37,10 @@ CHECK_LIBRARY_EXISTS(profiler malloc "" HAVE_LIBPROFILER)
 
 #Raspberry Pi specific includes.
 #Requires the installation of the userland package.
-include_directories (/opt/vc/include /opt/vc/src/hello_pi/libs/ilclient)
-include_directories (/opt/vc/include/interface/vcos/pthreads)
-include_directories (/opt/vc/include/IL /opt/vc/include/interface/vmcs_host/linux)
-link_directories (/opt/vc/lib /opt/vc/src/hello_pi/libs/ilclient)
+include_directories (/sdc/raspberrypi/firmware-master/opt/vc/include /sdc/raspberrypi/firmware-master/opt/vc/src/hello_pi/libs/ilclient)
+include_directories (/sdc/raspberrypi/firmware-master/opt/vc/include/interface/vcos/pthreads)
+include_directories (/sdc/raspberrypi/firmware-master/opt/vc/include/IL /sdc/raspberrypi/firmware-master/opt/vc/include/interface/vmcs_host/linux)
+link_directories (/sdc/raspberrypi/firmware-master/opt/vc/src/hello_pi/libs/ilclient)
 
 #Compile options
 if (CMAKE_COMPILER_IS_GNUCXX)
@@ -74,7 +74,7 @@ configure_file (omxcv-config.h.in omxcv-config.h)
 add_library (omxcv ${HEADERS} ${SOURCE})
 target_link_libraries (omxcv LINK_PRIVATE EGL GLESv2)
 target_link_libraries (omxcv LINK_PRIVATE ${LIBAVFORMAT_LIBRARIES} ${LIBAVCODEC_LIBRARIES} ${LIBAVUTIL_LIBRARIES} ${OpenCV_LIBS})
-target_link_libraries (omxcv LINK_PRIVATE bcm_host openmaxil bcm_host vcos vchiq_arm ilclient)
+target_link_libraries (omxcv LINK_PRIVATE  ilclient bcm_host openmaxil bcm_host vcos vchiq_arm)
 target_link_libraries (omxcv LINK_PRIVATE ${CMAKE_THREAD_LIBS_INIT})
 
 if (HAVE_LIBTCMALLOC)

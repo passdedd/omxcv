@@ -100,7 +100,8 @@ bool OmxCvImpl::lav_init() {
     }
 
     if (m_mux_ctx->oformat->flags & AVFMT_GLOBALHEADER) {
-        m_video_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
+ //       m_video_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
+        m_video_stream->codec->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
     }
 
     return true;

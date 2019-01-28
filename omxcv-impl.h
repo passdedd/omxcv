@@ -29,7 +29,8 @@ extern "C" {
 //nFlags won't be set correctly...
 #pragma pack(4)
 #include <bcm_host.h>
-#include <ilclient.h>
+//#include <ilclient.h>
+#include </opt/poky/sdk-raspberrypi-ffmpeg/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/src/hello_pi/libs/ilclient/ilclient.h>
 //For OMX_IndexParamNalStreamFormatSelect
 #include <OMX_Broadcom.h>
 #pragma pack()
